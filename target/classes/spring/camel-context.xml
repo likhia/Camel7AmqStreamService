@@ -4,12 +4,20 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring.xsd">
-
+    <bean class="org.apache.camel.component.kafka.KafkaComponent" id="kafka">
+        <property name="brokers" value="kafka-cluster-kafka-bootstrap.demo.svc:9092" />
+    </bean>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-        <route id="simple-route">
+        <route id="consumer-route">
+            <from id="kafka-consumer" uri="kafka:demo-topic" />
+            <log id="route-log" message="consumer >>> ${body}" />   
+        </route>
+
+        <route id="producer-route">
             <from id="route-timer" uri="timer://foo?period=1000"/>
             <setBody id="route-setBody"><simple>Hello World from camel-context.xml</simple></setBody>
-            <log id="route-log" message=">>> ${body}"/>
+            <to id="kafka1" uri="kafka:demo-topic" />
+            <log id="route-log-producer" message="producer >>> ${body}" />
         </route>
     </camelContext>
 </beans>
