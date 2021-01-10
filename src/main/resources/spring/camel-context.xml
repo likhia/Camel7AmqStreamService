@@ -14,7 +14,7 @@
         </route>
         <route id="producer-route">
             <from id="route-timer" uri="timer://simpleTimer?period=1000"/>
-            <setBody id="route-setBody"><simple>Hello World with ID ${id}</simple></setBody>
+            <setBody id="route-setBody"><simple>Message with ID ${id}</simple></setBody>
             <to id="kafka1" uri="kafka:demo-topic" />
             <log id="route-log-producer" message="producer >>> ${body}" />
         </route>
