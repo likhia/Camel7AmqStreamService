@@ -4,4 +4,6 @@ sleep 60s
 
 oc new-app amqfusedemo:latest
 
+oc start-build amqfusedemo --git-repository=https://github.com/likhia/Camel7AmqStreamService.git#main --incremental=false 
+
 oc expose service/camel7amqstreamservice
