@@ -3,7 +3,7 @@ apiVersion: "v1"
 kind: "Service"
 metadata:
   annotations:
-    fabric8.io/git-commit: "d805ca6f8c9cf22612b8db168f3e8a246e80a0c5"
+    fabric8.io/git-commit: "6f935845c1041e54e94a825c2b117ddef1baa919"
     fabric8.io/git-branch: "main"
     fabric8.io/git-url: "https://github.com/likhia/Camel7AmqStreamService.git"
     prometheus.io/port: "9779"

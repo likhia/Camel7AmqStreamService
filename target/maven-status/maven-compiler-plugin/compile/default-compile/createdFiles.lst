@@ -1,0 +1,5 @@
+org/mycompany/bean/InputMessageProcessor.class
+org/mycompany/bean/KafkaOutcome.class
+org/mycompany/bean/OutputMessageProcessor.class
+org/mycompany/Application.class
+org/mycompany/bean/KafkaInputMessage.class
