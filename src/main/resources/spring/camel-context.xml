@@ -21,7 +21,7 @@
         <route id="producer-rest-route">
             <from id="publish-message" uri="direct:publish-message" />
             <process ref="inputProcessor"/>
-            <log id="route-log-rest-producer" message="rest producer  >>> ${body}" />
+            <!-- log id="route-log-rest-producer" message="rest producer  >>> ${body}" /-->
             <to id="kafka2" uri="kafka:demo-topic" />
             <process ref="outputProcessor"/>
         </route> 
