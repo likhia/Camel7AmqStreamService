@@ -3,7 +3,7 @@ apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
   annotations:
-    fabric8.io/git-commit: "6f935845c1041e54e94a825c2b117ddef1baa919"
+    fabric8.io/git-commit: "6bb7e523ef43031d9d4bbeea699cf9e50075bf1a"
     fabric8.io/git-branch: "main"
     fabric8.io/git-url: "https://github.com/likhia/Camel7AmqStreamService.git"
   labels:
@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        fabric8.io/git-commit: "6f935845c1041e54e94a825c2b117ddef1baa919"
+        fabric8.io/git-commit: "6bb7e523ef43031d9d4bbeea699cf9e50075bf1a"
         fabric8.io/git-branch: "main"
         fabric8.io/git-url: "https://github.com/likhia/Camel7AmqStreamService.git"
       labels:
