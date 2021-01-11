@@ -1,1 +1,5 @@
+/projects/Camel7AmqStreamService/src/main/java/org/mycompany/bean/OutputMessageProcessor.java
 /projects/Camel7AmqStreamService/src/main/java/org/mycompany/Application.java
+/projects/Camel7AmqStreamService/src/main/java/org/mycompany/bean/KafkaInputMessage.java
+/projects/Camel7AmqStreamService/src/main/java/org/mycompany/bean/InputMessageProcessor.java
+/projects/Camel7AmqStreamService/src/main/java/org/mycompany/bean/KafkaOutcome.java

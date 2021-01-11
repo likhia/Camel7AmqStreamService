@@ -7,18 +7,37 @@
     <bean class="org.apache.camel.component.kafka.KafkaComponent" id="kafka">
         <property name="brokers" value="kafka-cluster-kafka-bootstrap.demo.svc:9092" />
     </bean>
+    <bean class="org.mycompany.bean.InputMessageProcessor" id="inputProcessor"/>
+    <bean class="org.mycompany.bean.OutputMessageProcessor" id="outputProcessor"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration bindingMode="json" component="spark-rest" port="9091"/>
+        <rest path="/message">
+            <post uri="/publish" type="org.mycompany.bean.KafkaInputMessage" outType="org.mycompany.bean.KafkaOutcome" 
+                  consumes="application/json" produces="application/json">
+                <to uri="direct:publish-message" />
+            </post>
+        </rest>
+
+        <route id="producer-rest-route">
+            <from id="publish-message" uri="direct:publish-message" />
+            <process ref="inputProcessor"/>
+            <log id="route-log-rest-producer" message="rest producer  >>> ${body}" />
+            <to id="kafka2" uri="kafka:demo-topic" />
+            <process ref="outputProcessor"/>
+        </route> 
+
         <route id="consumer-route">
             <from id="kafka-consumer" uri="kafka:demo-topic" />
-            <log id="route-log" message="consumer 22>>> ${body}" />   
+            <log id="route-log" message="consumer >>> ${body}" />   
         </route>
-    
+        
         <route id="producer-route">
-            <from id="route-timer" uri="timer://simpleTimer?period=1000"/>
+            <from id="route-timer" uri="timer://simpleTimer?period=10000"/>
             <setBody id="route-setBody"><simple>Message with ID ${id}</simple></setBody>
             <to id="kafka1" uri="kafka:demo-topic" />
-            <log id="route-log-producer" message="producer 22 >>> ${body}" />
+            <log id="route-log-producer" message="producer  >>> ${body}" />
         </route>
-
+        
+        
     </camelContext>
 </beans>
