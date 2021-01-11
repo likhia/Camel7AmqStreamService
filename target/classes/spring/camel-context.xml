@@ -12,12 +12,13 @@
             <from id="kafka-consumer" uri="kafka:demo-topic" />
             <log id="route-log" message="consumer >>> ${body}" />   
         </route>
-
+    
         <route id="producer-route">
-            <from id="route-timer" uri="timer://foo?period=1000"/>
-            <setBody id="route-setBody"><simple>Hello World from camel-context.xml</simple></setBody>
+            <from id="route-timer" uri="timer://simpleTimer?period=1000"/>
+            <setBody id="route-setBody"><simple>Message with ID ${id}</simple></setBody>
             <to id="kafka1" uri="kafka:demo-topic" />
             <log id="route-log-producer" message="producer >>> ${body}" />
         </route>
+
     </camelContext>
 </beans>
